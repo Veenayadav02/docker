@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    http://docker.build("my-java-app:${env.BUILD_ID}")
+                    git clone https://github.com/Veenayadav02/docker.git
                 }
             }
         }
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     // Run tests if needed
-                    // For a basic Java program, you might not need this stage
+                    docker build -t newimg .
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     // Deploy the Docker image as needed
-                    // This could be pushing to a Docker registry or deploying to a Kubernetes cluster
+                    docker reun -it newimg
                 }
             }
         }
